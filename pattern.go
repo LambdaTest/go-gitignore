@@ -76,6 +76,12 @@ func NewPattern(tokens []*Token) Pattern {
 		tokens = tokens[1:]
 	}
 
+	// after processing NEGATION and initial SEPARATOR tokens,
+	// check if we have any tokens left
+	if len(tokens) == 0 {
+		return nil
+	}
+
 	// is this pattern for directories only?
 	_directory := false
 	_last := len(tokens) - 1
